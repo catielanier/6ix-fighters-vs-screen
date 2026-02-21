@@ -21,11 +21,13 @@
 
 <Router {url}>
   <main>
-    {#if isLoggedIn}
-      <Route path="/" component={Manager} />
-    {:else}
-      <Route path="/"><Login {setLogin} /></Route>
-    {/if}
+    <Route path="/">
+      {#if isLoggedIn}
+        <Manager />
+      {:else}
+        <Login {setLogin} />
+      {/if}
+    </Route>
     <Route path="/versus" component={VersusScreen} />
   </main>
 </Router>
