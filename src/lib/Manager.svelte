@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
   import { writable } from "svelte/store";
-  import { getDatabase, get, set, ref } from "firebase/database";
+  import { getDatabase, get, ref, update } from "firebase/database";
   import { firebase } from "../utils/firebase";
 
   const database = getDatabase(firebase);
@@ -22,7 +22,9 @@
   const players = writable([]);
   const teams = writable([]);
 
-  const saveVersusScreen = () => {};
+  const saveVersusScreen = () => {
+    update(vsReference, $versus);
+  };
 
   onMount(() => {
     get(rootReference).then((res) => {
