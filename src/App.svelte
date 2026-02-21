@@ -10,6 +10,10 @@
   let isLoggedIn;
   let url = "";
 
+  export const setLogin = () => {
+    isLoggedIn = true;
+  };
+
   onMount(() => {
     isLoggedIn = !!getToken();
   });
@@ -20,7 +24,7 @@
     {#if isLoggedIn}
       <Route path="/" component={Manager} />
     {:else}
-      <Route path="/" component={Login} />
+      <Route path="/"><Login {setLogin} /></Route>
     {/if}
     <Route path="/versus" component={VersusScreen} />
   </main>
